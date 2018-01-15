@@ -35,20 +35,6 @@ def test_cifar_resnet_distributed(device_id):
                "-device", str(device_id) ]
     mpiexec_test(device_id, script_under_test, mpiexec_params, params, 0.86, False, 3)
 
-def test_cifar_resnet_distributed_fp16(device_id):
-    # Skip test if not on Linux as NCCL is not available for Windows, and fp16 aggregation needs it
-    import platform
-    if platform.system() != 'Linux':
-        pytest.skip('test only runs on Linux (NCCL dependency)')
-    params = [ "-e", "2",
-               "-datadir", base_path,
-               "-q", "32",
-               "-es", "512",
-               "-fp16",
-               "-r",
-               "-device", str(device_id) ]
-    mpiexec_test(device_id, script_under_test, mpiexec_params, params, 0.86, False, 3)
-
 def test_cifar_resnet_distributed_1bitsgd(device_id):
     params = [ "-e", "2",
                "-datadir", base_path,
