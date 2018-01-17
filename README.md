@@ -12,6 +12,7 @@ Note:
 * FP16 implementation on CPU is not optimized, and it's not supposed to be used in CPU inference directly. User needs to convert the model to 32-bit floating point before running on CPU.
 * FP16 gradient aggregation is currently only implemented on GPU using NCCL2. Distributed training with FP16 with MPI is not supported.
 * FP16 math is a subset of current FP32 implementation. Some model may get Feature Not Implemented exception using FP16.
+* FP16 is currently not supported in BrainScript. Please use Python for FP16.
 
 ***2017-12-05.* CNTK 2.3.1**
 Release of Cognitive Toolkit v.2.3.1.
